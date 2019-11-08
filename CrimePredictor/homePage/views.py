@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import loader
 
 def index(request):
-    return HttpResponse("Welcome to the crime predictor home page")
+    template = loader.get_template('test.html')
+    context = {}
+    return HttpResponse(template.render(context, request))

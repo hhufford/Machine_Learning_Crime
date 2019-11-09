@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 
-def index(request):
+def index(request): 
     try:
         in1 = float(request.POST["input1"])
         in2 = float(request.POST["input2"])
@@ -10,7 +10,7 @@ def index(request):
         in4 = float(request.POST["input4"])
         in5 = float(request.POST["input5"])
         result = machine_learning(in1,in2,in3,in4,in5)
-        template = loader.get_template('submit.html')
+        template = loader.get_template('index.html')
         context = {'result' : result}
         return HttpResponse(template.render(context, request))
     except:
@@ -19,4 +19,6 @@ def index(request):
         return HttpResponse(template.render(context, request))
 
 def machine_learning(in1,in2,in3,in4,in5):
-    return True
+    return "Low"
+
+

@@ -18,6 +18,16 @@
 				font-family: "Verdana";
 			}
 			
+			p {
+				padding: 10px;
+				font-family: "Verdana";
+				text-align: center;
+			}
+			
+			main {
+				text-align: center;
+			}
+			
 			.button {
 				width: 100px; 
 				margin: 0 auto;
@@ -34,6 +44,31 @@
 				cursor: pointer;
 				border-radius: 8px;
 			}
+			
+			.result{
+				padding-top: 0px;
+				padding-bottom: 0px;
+				padding-right: 15px;
+				padding-left: 15px;
+				text-align: center;
+				margin: 0 auto;
+				color: white;
+				display: inline-block;
+				font-size: 26px;
+				line-height: 16px;
+			}
+			
+			#high{
+				background: #e85d56;
+			}
+			
+			#avg{
+				background: #577abd;
+			}
+			
+			#low{
+				background: #48c24e;
+			}
 		</style>
 	
 		<title>{% block title %}Machine Learning Crime Predictor{% endblock %}</title>
@@ -45,7 +80,7 @@
 
 	<body>
 		<main>
-			<form action="" method="post">
+			<form action="{% url 'index' %}" method="post">
 			{% csrf_token %}
 				<table align="center">
 					<tr>
@@ -81,6 +116,24 @@
 				</br>
 				<input type="submit" align="center" class="button" value ="Predict">
 			</form>
+			{% ifequal result 'High' %}
+				<p>Your Prediction:</p>
+				<div class="result" id="high">
+					<p>High</p>
+				</div>
+			{% endifequal %}
+			{% ifequal result 'Average' %}
+				<p>Your Prediction:</p>
+				<div class="result" id="avg">
+					<p>Average</p>
+				</div>
+			{% endifequal %}
+			{% ifequal result 'Low' %}
+				<p>Your Prediction:</p>
+				<div class="result" id="low">
+					<p>Low</p>
+				</div>
+			{% endifequal %}
 		</main>
 	</body>
 

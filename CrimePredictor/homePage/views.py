@@ -6,3 +6,8 @@ def index(request):
     template = loader.get_template('index.html')
     context = {}
     return HttpResponse(template.render(context, request))
+	
+def submit(request):
+	template = loader.get_template('submit.html')
+	context = {}
+	return HttpResponse(template.render(context, request))

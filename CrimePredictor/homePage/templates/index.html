@@ -12,6 +12,16 @@
 				font-size: 30px;
 				width: 100%;
 			}
+			
+			th, td {
+				padding: 10px;
+			}
+			
+			.button {
+				width: 100px; 
+				margin: 0 auto;
+				display: block;
+			}
 		</style>
 	
 		<title>{% block title %}Machine Learning Crime Predictor{% endblock %}</title>
@@ -23,12 +33,41 @@
 
 	<body>
 		<main>
-		
+			<form action="{% url 'submit' %}" method="post">
+			{% csrf_token %}
+				<table align="center">
+					<tr>
+						<th>Community Statistic</th>
+						<th>Input</th>
+					</tr>
+					<tr>
+						<td>Statistic 1</td>
+						<td><input type="text" name="input1"></td>
+					</tr>
+					
+					<tr>
+						<td>Statistic 2</td>
+						<td><input type="text" name="input2"></td>
+					</tr>
+					
+					<tr>
+						<td>Statistic 3</td>
+						<td><input type="text" name="input3"></td>
+					</tr>
+					
+					<tr>
+						<td>Statistic 4</td>
+						<td><input type="text" name="input4"></td>
+					</tr>
+					
+					<tr>
+						<td>Statistic 5</td>
+						<td><input type="text" name="input5"></td>
+					</tr>
+					
+				</table>
 			
-			<form method="post">
-			
-			
-				<input type="submit" class="button" value ="Predict">
+				<input type="submit" align="center" class="button" value ="Predict">
 			</form>
 		
 		</main>

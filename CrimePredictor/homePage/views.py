@@ -22,8 +22,6 @@ def load_crime_model():
 def machine_learning(in1):
 	result = crime_model.predict(in1)
 	return result
-	#temporary
-    return "Low"
 
 def index(request): 
 	#load_crime_model()

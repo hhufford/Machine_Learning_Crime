@@ -26,6 +26,8 @@ Note that there are two areas in the code where the dataset will need to uploade
 ## Read in Data
 """
 
+
+
 # Commented out IPython magic to ensure Python compatibility.
 #Set up code
 import numpy as np
@@ -61,7 +63,10 @@ from google.colab import files
 uploaded = files.upload()
 
 import io
-raw_data = pd.read_csv(io.BytesIO(uploaded['communities.csv']))
+#raw_data = pd.read_csv(io.BytesIO(uploaded['communities.csv']))
+
+with open('communities.csv', 'r') as file:
+	raw_data = pd.read_csv(io.BytesIO(file))
 
 #Ensure data has been imported correctly
 raw_data.head()
@@ -744,7 +749,10 @@ from google.colab import files
 uploaded = files.upload()
 
 import io
-raw_data = pd.read_csv(io.BytesIO(uploaded['communities.csv']))
+#raw_data = pd.read_csv(io.BytesIO(uploaded['communities.csv']))
+
+with open('communities.csv', 'r') as file:
+	raw_data = pd.read_csv(io.BytesIO(file))
 
 #Replace '?' with NA values
 raw_data = raw_data.replace('?', np.NaN)
@@ -1026,6 +1034,9 @@ model_community.fit(X_train_limited, y_train_limited, epochs=500, verbose=0)
 model_community.summary()
 model_community.evaluate(X_test_limited, y_test_limited)
 
+# Save this model for later use
+model_community.save("models/keras-crime.h5")
+
 #Try using linear regression as well
 limited_data = community_data[["PctPopUnderPov", "ViolentCrimesPerPop"]]
 X_limited = limited_data.copy()
@@ -1113,4 +1124,3 @@ model_community.compile(optimizer='adam', loss='mae', metrics=["accuracy"])
 model_community.fit(X_train_limited, y_train_limited, epochs=500, verbose=0)
 model_community.summary()
 model_community.evaluate(X_test_limited, y_test_limited)
-

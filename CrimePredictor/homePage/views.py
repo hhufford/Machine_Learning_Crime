@@ -12,7 +12,7 @@ import traceback
 
 def load_crime_model():
     global crime_model
-    model_file = 'models/keras-crime.h5'
+    model_file = os.path.join(settings.BASE_DIR, 'models/keras-crime.h5')
     crime_model = load_model(model_file)
     crime_model._make_predict_function()
 

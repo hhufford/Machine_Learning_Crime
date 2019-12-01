@@ -110,5 +110,4 @@ model_community.summary()
 model_community.evaluate(X_test_limited, y_test_limited)
 
 # Save this model for later use
-model_community.save("models/keras-crime.h5")
-
+model_community.save(os.path.join(settings.BASE_DIR, 'models/keras-crime.h5'))

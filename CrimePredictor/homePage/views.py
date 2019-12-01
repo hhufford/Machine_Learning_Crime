@@ -21,7 +21,13 @@ def load_crime_model():
 #Returns "Low", "Average", or "High"
 def machine_learning(in1):
     result = crime_model.predict(in1)
-    return result
+	
+	if result < 0.3:
+		return "Low"
+	elif result > 0.7:
+		return "High"
+	else:
+		return "Average"
 
 def index(request): 
 	#load_crime_model()

@@ -82,17 +82,18 @@
 		<main>
 			<form action="{% url 'index' %}" method="post">
 			{% csrf_token %}
+				<h4>Enter the following community statistics to predict the violent crime in your area</h4>
 				<table align="center">
 					<tr>
 						<th><h3>Community Statistic</h3></th>
 						<th><h3>Input</h3></th>
 					</tr>
 					<tr>
-						<td>Statistic 1</td>
+						<td>Poverty Rate</td>
 						<td><input type="text" name="input1"></td>
 					</tr>
 					
-					<tr>
+					<!--<tr>
 						<td>Statistic 2</td>
 						<td><input type="text" name="input2"></td>
 					</tr>
@@ -110,7 +111,7 @@
 					<tr>
 						<td>Statistic 5</td>
 						<td><input type="text" name="input5"></td>
-					</tr>
+					</tr>-->
 					
 				</table>
 				</br>

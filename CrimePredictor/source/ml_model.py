@@ -59,14 +59,10 @@ plt.style.use("ggplot")
 #Must have "communites.csv" on local drive
 #Data can be downloaded from (http://archive.ics.uci.edu/ml/datasets/communities+and+crime) and saved as a csv 
 
-from google.colab import files
-uploaded = files.upload()
+import os
+from django.conf import settings
 
-import io
-#raw_data = pd.read_csv(io.BytesIO(uploaded['communities.csv']))
-
-with open('communities.csv', 'r') as file:
-	raw_data = pd.read_csv(io.BytesIO(file))
+raw_data = pd.read_csv(os.path.join(settings.BASE_DIR, 'communities.csv'))
 
 #Ensure data has been imported correctly
 raw_data.head()
@@ -521,8 +517,6 @@ print(classification_report(y_test_p_knn, testPredictions))
 ###Set Up:
 """
 
-!pip install --upgrade tensorflow==2.0
-
 import tensorflow as tf
 import tensorflow.keras as keras
 import numpy as np
@@ -722,10 +716,10 @@ model_police2.evaluate(X_test_p, y_test_p)
 This don't work homies
 """
 
-!pip install lime
-import lime
-import lime.lime_tabular
-import sklearn.ensemble
+#!pip install lime
+#import lime
+#import lime.lime_tabular
+#import sklearn.ensemble
 
 #rf = sklearn.ensemble.RandomForestRegressor(n_estimators=1000)
 #train, test, labels_train, labels_test = sklearn.model_selection.train_test_split(X_community, y_community, train_size=0.80)

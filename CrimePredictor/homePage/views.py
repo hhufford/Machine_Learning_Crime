@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 
-#from source import ml_model
+from source import ml_model
 
 import numpy as np
 #from tensorflow.keras.models import load_model

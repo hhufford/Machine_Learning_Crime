@@ -41,7 +41,21 @@ def index(request):
         #in3 = float(request.POST["input3"])
         #in4 = float(request.POST["input4"])
         #in5 = float(request.POST["input5"])
-        result = machine_learning(in1)
+		
+		#estimated statistics calculated based on https://www2.census.gov/library/publications/decennial/1990/cph-l/cph-l-110.pdf
+		average = 0.1382
+		std_dev = 0.067
+		norm = (in1 - average)/(std_dev)
+		
+		if norm < -2:
+			norm = -2
+		elif norm > 2:
+			norm = 2
+			
+		norm = norm/5
+		norm = norm + 0.5
+		
+        result = machine_learning(norm)
         print("The result is")
         print(result)
         template = loader.get_template('index.html')

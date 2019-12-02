@@ -107,7 +107,7 @@ model_community = keras.Sequential(layers)
 model_community.compile(optimizer='adam', loss='mae', metrics=["mae", "mse"])
 model_community.fit(X_train_limited, y_train_limited, epochs=500, verbose=0)
 model_community.summary()
-model_community.evaluate(X_test_limited, y_test_limited)
+model_community.evaluate(X_test_limited, y_test_limited)     
 
 # Save this model for later use
 model_community.save(os.path.join(settings.BASE_DIR, 'source\keras-crime.h5'))

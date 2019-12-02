@@ -5,6 +5,7 @@ from django.template import loader
 from source import ml_model
 
 import numpy as np
+import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.backend import clear_session
 import traceback
@@ -16,15 +17,16 @@ def load_crime_model():
     global crime_model
     model_file = os.path.join(settings.BASE_DIR, 'source\keras-crime.h5')
     crime_model = load_model(model_file)
-    crime_model._make_predict_function()
+    #crime_model._make_predict_function()
 
 
 #Uses the Machine Learning model to predict the violent crime rate
 #Returns "Low", "Average", or "High"
 def machine_learning(in1):
     print("in the function")
-    result = crime_model.predict(in1)
+    result = crime_model.predict([in1])[0][0]
     print("after predict call")
+    print(result)
     if result < 0.3:
         return "Low"
     elif result > 0.7:

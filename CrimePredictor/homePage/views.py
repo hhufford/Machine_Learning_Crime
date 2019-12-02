@@ -30,7 +30,7 @@ def machine_learning(in1):
 		return "Average"
 
 def index(request): 
-	#load_crime_model()
+	load_crime_model()
     try:
         in1 = float(request.POST["input1"])
         #in2 = float(request.POST["input2"])
